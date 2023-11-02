@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Akna"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-01 10:15:13 PM"/>
+        <attribute name="created" value="QWtuYTtMQVBUT1AtUFBBNFE1T0U7MjAyMy0xMS0wMTswODo1MzozNSBQTTsyNzI1"/>
+        <attribute name="edited" value="QWtuYTtMQVBUT1AtUFBBNFE1T0U7MjAyMy0xMS0wMTsxMDoxNToxMyBQTTsxOzI4MjA="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="status, nama" type="String" array="False" size=""/>
+            <declare name="sembako, atk, totalelektronik, totalsembako, totalatk" type="Integer" array="False" size=""/>
+            <declare name="bayar, diskon" type="Real" array="False" size=""/>
+            <input variable="nama"/>
+            <output expression="&quot;masukan harga belanja elektronik&quot;" newline="True"/>
+            <input variable="elektronik"/>
+            <output expression="&quot;masukan harga pengeluaran sembako&quot;" newline="True"/>
+            <input variable="sembako"/>
+            <output expression="&quot;masukan harga pengeluaran atk&quot;" newline="True"/>
+            <input variable="atk"/>
+            <assign variable="totalpembelian" expression="elektronik+sembako+atk"/>
+            <output expression="&quot;Masukan Level Keanggotaan&quot;" newline="True"/>
+            <input variable="status"/>
+            <if expression="status=&quot;anggota platinum&quot;">
+                <then>
+                    <if expression="totalpembelian&gt;250000">
+                        <then>
+                            <assign variable="diskon" expression="0.25*totalpembelian"/>
+                        </then>
+                        <else>
+                            <assign variable="diskon" expression="0.15*totalpembelian"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <if expression="status=&quot;anggota gold&quot;">
+                        <then>
+                            <if expression="totalpembelian&gt;200000">
+                                <then>
+                                    <assign variable="diskon" expression="0.2*totalpembelian"/>
+                                </then>
+                                <else>
+                                    <assign variable="diskon" expression="0.1*totalpembelian"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <if expression="status=&quot;anggota silver&quot;">
+                                <then>
+                                    <if expression="totalpembelian&gt;100000">
+                                        <then>
+                                            <assign variable="diskon" expression="0.01*totalpembelian"/>
+                                        </then>
+                                        <else>
+                                            <assign variable="diskon" expression="0.05*totalpembelian"/>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="bayar" expression="totalpembelian-diskon"/>
+            <output expression="&quot;Total Pembelian: &quot;&amp;TotalPembelian &amp; &quot;Diskon:&quot; &amp;&quot; Jumlah Pembayara: &quot;&amp; bayar" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
